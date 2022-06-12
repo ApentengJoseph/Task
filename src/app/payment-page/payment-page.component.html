@@ -1,0 +1,156 @@
+<div class="container d-lg-flex">
+  <div class="box-1 bg-light user">
+    <div>
+      <p class="fw-bold">Summary Order</p>
+      <p class="dis mb-3 subhead">
+        Check your item and select your shipping for better<br />
+        experience order item.
+      </p>
+    </div>
+    <div class="shopping-list">
+      <div class="item" *ngFor="let order of displayOrders">
+        <div class="img">
+          <img [src]="order.image" alt="" />
+        </div>
+        <div class="product-name">
+          <small> {{order.name}}<br />Sneakers-Mindful Grey </small>
+          <div class="price">
+            <small>{{order.price | currency }} <s class="discount">{{order.discount | currency}}</s></small>
+          </div>
+        </div>
+        <span class="size">42 EU - 8.5 US</span>
+      </div>
+    </div>
+    <div class="shipping-methods">
+      <h6 class="shipping-methods__title">
+        Available Shipping Methods<span
+          class="fab fa fa-info-circle circle"
+        ></span>
+      </h6>
+      <div class="shipping-methods__delivery">
+        <div class="brand">
+          <img src="../../assets/image-3.png" alt="dhl">
+        </div>
+        <div class="subtitle">
+          <h6 class="title">Fedex Delivery</h6>
+          <span class="text">Delivery: 2-3 days work</span>
+        </div>
+        <div class="price">
+          Free
+          <span><input type="checkbox" [disabled]="isDisable" #internationalDelivery [checked]="freeDeliveryMethod" (change)="freeDelivery(internationalDelivery.checked)"></span>
+        </div>
+      </div>
+      <h6 class="shipping-methods__subtitle">
+        Available International Shipping:
+      </h6>
+      <div class="shipping-methods__delivery">
+        <div class="brand">
+          <img src="../../assets/image-4.png" alt="dhl">
+        </div>
+        <div class="subtitle">
+          <h6 class="title">DHL Delivery</h6>
+          <span class="text">Delivery: 1-3 days work</span>
+        </div>
+        <div class="price">
+          $12.00
+          <span><input type="checkbox" [disabled]="able" #dhlDeliveryCheckbox [checked]="dhlDelivery" (change)="onDhlDelivery(dhlDeliveryCheckbox.checked)"></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="box-2">
+    <div class="box-inner-2">
+      <div>
+        <p class="fw-bold">Payment Details</p>
+        <p class="dis mb-3 subhead">
+          Complete your purchase by providing your<br />
+          payment details order.
+        </p>
+      </div>
+      <form [formGroup]="orderDetails" >
+        <div class="mb-3">
+          <p class="dis fw-bold mb-2">Email address</p>
+          <div
+            class="d-flex align-items-center justify-content-between card-atm border rounded"
+          >
+            <div class="fab fa fa-at ps-3"></div>
+            <input class="form-control" formControlName="email" type="email" />
+            <div *ngIf="(!form['email'].errors?.['required'] && !form['email'].errors?.['email'] )" class="fab fa fa-check-circle ps-3 ok"></div>
+          </div>
+        </div>
+        <div>
+          <p class="dis fw-bold mb-2">Card detail</p>
+          <div
+            class="d-flex align-items-center justify-content-between card-atm border rounded"
+          >
+            <div class="fab fa fa-credit-card ps-3"></div>
+            <input type="text" class="form-control" formControlName="cardNumber" placeholder="Card Number" />
+            <div class="d-flex w-50">
+              <input
+                type="text"
+                class="form-control px-0"
+                formControlName="monthYear"
+                placeholder="MM/YY"
+              />
+              <div class="left-line"></div>
+              <input
+                type="password"
+                maxlength="3"
+                class="form-control px-0"
+                formControlName="cvv"
+                placeholder="CVV"
+              />
+            </div>
+          </div>
+          <div class="my-3 cardname">
+            <p class="dis fw-bold mb-2">Card Holder</p>
+            <div
+              class="d-flex align-items-center justify-content-between card-atm border rounded"
+            >
+              <div class="fab fa fa-user ps-3"></div>
+              <input class="form-control" type="text" formControlName="cardHolder"/>
+            </div>
+          </div>
+          <div class="address">
+            <p class="dis fw-bold mb-3">Billing address</p>
+            <div
+              class="d-flex align-items-center justify-content-between card-atm border rounded"
+            >
+              <input class="form-control" type="text" formControlName="address"/>
+              <div *ngIf="(!form['address'].errors?.['required'])" class="fab fa fa-check-circle ps-3 ok"></div>
+            </div>
+            <div class="d-flex">
+              <input class="form-control zip" type="text" formControlName="zipCode"/>
+              <input class="form-control state" type="text" formControlName="country"/>
+            </div>
+
+            <div class="d-flex flex-column dis">
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <p>
+                  Subtotal <span class="fab fa fa-info-circle circle"></span>
+                </p>
+                <p><span></span>{{subTotal | currency }}</p>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <p>VAT<span>(20%)</span></p>
+                <p><span></span>{{ VAT | currency }}</p>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <p class="fw-bold">Total</p>
+                <p class="fw-bold"><span></span>{{total | currency }}</p>
+              </div>
+              <button type="submit" (click)="onSubmit()" [disabled]="orderDetails.invalid" class="btn btn-primary mt-2">Pay <span></span>{{total | currency }}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
