@@ -27,7 +27,7 @@
           class="fab fa fa-info-circle circle"
         ></span>
       </h6>
-      <div class="shipping-methods__delivery">
+      <div class="shipping-methods__delivery" [ngStyle]="internationalDelivery.checked?{'border': '1px solid gray'} : {'border': 'none'}">
         <div class="brand">
           <img src="../../assets/image-3.png" alt="dhl">
         </div>
@@ -43,7 +43,7 @@
       <h6 class="shipping-methods__subtitle">
         Available International Shipping:
       </h6>
-      <div class="shipping-methods__delivery">
+      <div class="shipping-methods__delivery" [ngStyle]="dhlDeliveryCheckbox.checked?{'border': '1px solid gray'} : {'border': 'none'}">
         <div class="brand">
           <img src="../../assets/image-4.png" alt="dhl">
         </div>

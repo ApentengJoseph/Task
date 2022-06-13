@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -72,10 +71,11 @@ export class PaymentPageComponent implements OnInit {
 
   freeDelivery(value: boolean) {
     this.freeDeliveryMethod = value;
-    if (this.dhlDelivery) {
-      this.isDisable = true;
-    } else if (this.freeDeliveryMethod === true) {
-      console.log(`Delivery By: FREE DELIVERY`);
+    if (this.freeDeliveryMethod) {
+      this.able = true;
+      console.log(`Delivery By: FedEx DELIVERY`);
+    }else{
+      this.able = false
     }
   }
 
