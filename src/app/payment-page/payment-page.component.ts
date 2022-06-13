@@ -27,10 +27,10 @@ export class PaymentPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
-    private el: ElementRef
   ) {}
 
   ngOnInit(): void {
+    //Form validations
     this.orderDetails = this.formBuilder.group({
       cardNumber: ['', Validators.required],
       monthYear: ['', Validators.required],
@@ -45,6 +45,7 @@ export class PaymentPageComponent implements OnInit {
 
     this.displayOrders = this.dataService.getOrders();
 
+    //For Calculating subtotal and total prices.
     this.subTotal =
       this.displayOrders[0].price +
       this.displayOrders[1].price +
@@ -56,6 +57,7 @@ export class PaymentPageComponent implements OnInit {
     return this.orderDetails.controls;
   }
 
+  // Method For toggling delivery state
   onDhlDelivery(value: boolean) {
     this.dhlDelivery = value;
     if (this.dhlDelivery) {
@@ -72,12 +74,12 @@ export class PaymentPageComponent implements OnInit {
     this.freeDeliveryMethod = value;
     if (this.dhlDelivery) {
       this.isDisable = true;
-    }else if(this.freeDeliveryMethod === true){
+    } else if (this.freeDeliveryMethod === true) {
       console.log(`Delivery By: FREE DELIVERY`);
     }
-
   }
 
+  // Method for Form Submitting
   onSubmit() {
     console.log(`ORDER DETAILS FOR ITEM 1.
     NAME: ${this.displayOrders[0].name}. PRICE: ${this.displayOrders[0].price},
@@ -88,7 +90,7 @@ export class PaymentPageComponent implements OnInit {
     console.log(
       `PAYMENT DETAILS: EMAIL: ${this.orderDetails.value.email} CARD NUMBER: ${this.orderDetails.value.cardNumber} EXPIREY DATE: ${this.orderDetails.value.monthYear} CVV: ${this.orderDetails.value.cvv} CARD HOLDER:${this.orderDetails.value.cardHolder} BILLING ADDRESS: ${this.orderDetails.value.monthYear} COUNTRY: ${this.orderDetails.value.country} ZIPCODE: ${this.orderDetails.value.zipCode} `
     );
-    console.log(`TOTAL ORDER: ${this.total}`)
+    console.log(`TOTAL ORDER: ${this.total}`);
     this.orderDetails.reset();
   }
 }

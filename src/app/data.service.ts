@@ -12,6 +12,7 @@ export class DataService {
     return this.Orders;
   }
 
+  // Order static data
   Orders:DataModel[] = [{
     image: '../assets/image-1.png',
     price: 250.4,

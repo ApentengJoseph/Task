@@ -60,19 +60,7 @@
   border-radius: 0;
   border-bottom-right-radius: 7px;
 }
-.box-2 .box-inner-2 .btn.btn-outline-primary {
-  width: 120px;
-  padding: 10px;
-  font-size: 11px;
-  padding: 0% !important;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 0;
-  background-color: rgb(165, 164, 164);
-  color: black;
-  font-weight: 600;
-}
+
 .box-2 .box-inner-2 .btn.btn-primary {
   background-color: #000000;
   color: whitesmoke;
@@ -240,6 +228,3 @@ input.ng-invalid.ng-touched{
   border: #a94442 1px solid !important;
 }
 
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948 !important;
-}
