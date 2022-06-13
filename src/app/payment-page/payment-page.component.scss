@@ -98,7 +98,7 @@
 }
 .shopping-list {
   width: 100%;
-  height: 50%;
+  height: 46.5%;
   border-radius: 7px;
   border: 1px solid rgb(218, 218, 218);
   display: flex;
@@ -161,7 +161,7 @@ img {
 }
 
 .shipping-methods {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   &__title {
@@ -169,7 +169,7 @@ img {
   }
 
   &__subtitle {
-    margin-top: 0.5rem;
+    margin-top: 2rem;
     color: gray;
     font-weight: 500;
   }
